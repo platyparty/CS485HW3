@@ -28,18 +28,23 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-        Debug.Log("Move Triggered: " + moveInput);
+        //Debug.Log("Move Triggered: " + moveInput);
     }
 
     public void OnJump(InputValue value)
     {
         jumpInput = value.isPressed;
-        Debug.Log("Jump Triggered: " + jumpInput);
+        //Debug.Log("Jump Triggered: " + jumpInput);
     }
 
     public void OnResetPosition(InputValue value)
     {
         resetInput = value.isPressed;
+    }
+
+    public void OnDebug(InputValue value)
+    {
+        Debug.Log("Velocity: " + rb.linearVelocity.magnitude);
     }
 
     // Update is called once per frame
@@ -48,7 +53,7 @@ public class PlayerController : MonoBehaviour
         // Move character based on WASD input
         if (moveInput.magnitude >= 0.01f)
         {
-            Debug.Log("moveInput: " + moveInput);
+            //Debug.Log("moveInput: " + moveInput);
             Vector3 movementVector = new Vector3(moveInput.x, 0f, moveInput.y);
             movementVector *= moveSpeed;
             rb.AddForce(movementVector, ForceMode.Acceleration);

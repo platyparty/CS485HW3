@@ -731,8 +731,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   rb: {fileID: 1127676369}
-  moveSpeed: 20
-  jumpSpeed: 5
+  moveSpeed: 30
+  jumpSpeed: 7
 --- !u!95 &1127676375
 Animator:
   serializedVersion: 7
