@@ -5,8 +5,8 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] Rigidbody rb;
-    [SerializeField] float SpeedBlend = 5f;
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float jumpSpeed;
     Vector2 moveInput;
     bool jumpInput;
     bool allowJump = false; // jump is allowed when touching a surface
@@ -50,11 +50,12 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("moveInput: " + moveInput);
             Vector3 movementVector = new Vector3(moveInput.x, 0f, moveInput.y);
-            movementVector *= SpeedBlend;
-            rb.AddForce(movementVector, ForceMode.Force);
+            movementVector *= moveSpeed;
+            rb.AddForce(movementVector, ForceMode.Acceleration);
         }
 
-        animator.SetFloat("SpeedBlend", rb.linearVelocity.magnitude);
+        float speedBlend = rb.linearVelocity.magnitude / moveSpeed;
+        animator.SetFloat("SpeedBlend", speedBlend);
 
         Vector3 facing = rb.linearVelocity;
         facing.y = 0f;
@@ -82,9 +83,6 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector3(0,0,0);
             resetInput = false;
         }
-
-        
-
     }
     void OnCollisionEnter(Collision collision)
         {
