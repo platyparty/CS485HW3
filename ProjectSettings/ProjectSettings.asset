@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 82f5d11299c034b38a73b49919d76903
+  productGUID: e5a79463320f1456f9dd1ceb56d46ea7
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: HW3Redo3
+  productName: HW3Redo
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -846,14 +846,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: HW3Redo3
+  metroPackageName: HW3Redo
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: HW3Redo3
+  metroApplicationDescription: HW3Redo
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -924,10 +924,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 5ce5dac1-9f8f-4532-8aec-6647ed8eba33
+  cloudProjectId: de929689-0a51-4c69-b4fa-d89a4fc751a0
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: HW3Redo3 2026-03-29_14-33-28
+  projectName: HW3Redo
   organizationId: amykbernard
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

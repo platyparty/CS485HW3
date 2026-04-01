@@ -5,11 +5,13 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] Rigidbody rb;
-    [SerializeField] float SpeedBlend = 5f;
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float jumpSpeed;
     Vector2 moveInput;
     bool jumpInput;
     bool allowJump = false; // jump is allowed when touching a surface
+    bool waterInput;
+    bool allowWater = false;
     bool resetInput;
     Animator animator;
 
@@ -28,18 +30,31 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-        Debug.Log("Move Triggered: " + moveInput);
+        //Debug.Log("Move Triggered: " + moveInput);
     }
 
     public void OnJump(InputValue value)
     {
         jumpInput = value.isPressed;
-        Debug.Log("Jump Triggered: " + jumpInput);
+        //Debug.Log("Jump Triggered: " + jumpInput);
+    }
+
+    public void OnWater(InputValue value)
+    {
+        waterInput = value.isPressed;
+        Debug.Log("Water pressed: " + waterInput);
+
+        animator.SetTrigger("Water");
     }
 
     public void OnResetPosition(InputValue value)
     {
         resetInput = value.isPressed;
+    }
+
+    public void OnDebug(InputValue value)
+    {
+        Debug.Log("Velocity: " + rb.linearVelocity.magnitude);
     }
 
     // Update is called once per frame
@@ -48,13 +63,14 @@ public class PlayerController : MonoBehaviour
         // Move character based on WASD input
         if (moveInput.magnitude >= 0.01f)
         {
-            Debug.Log("moveInput: " + moveInput);
+            //Debug.Log("moveInput: " + moveInput);
             Vector3 movementVector = new Vector3(moveInput.x, 0f, moveInput.y);
-            movementVector *= SpeedBlend;
-            rb.AddForce(movementVector, ForceMode.Force);
+            movementVector *= moveSpeed;
+            rb.AddForce(movementVector, ForceMode.Acceleration);
         }
 
-        animator.SetFloat("SpeedBlend", rb.linearVelocity.magnitude);
+        float speedBlend = rb.linearVelocity.magnitude / moveSpeed;
+        animator.SetFloat("SpeedBlend", speedBlend);
 
         Vector3 facing = rb.linearVelocity;
         facing.y = 0f;
@@ -82,9 +98,6 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector3(0,0,0);
             resetInput = false;
         }
-
-        
-
     }
     void OnCollisionEnter(Collision collision)
         {
