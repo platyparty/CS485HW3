@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     bool jumpInput;
     bool allowJump = false; // jump is allowed when touching a surface
+    bool waterInput;
+    bool allowWater = false;
     bool resetInput;
     Animator animator;
 
@@ -35,6 +37,14 @@ public class PlayerController : MonoBehaviour
     {
         jumpInput = value.isPressed;
         //Debug.Log("Jump Triggered: " + jumpInput);
+    }
+
+    public void OnWater(InputValue value)
+    {
+        waterInput = value.isPressed;
+        Debug.Log("Water pressed: " + waterInput);
+
+        animator.SetTrigger("Water");
     }
 
     public void OnResetPosition(InputValue value)
